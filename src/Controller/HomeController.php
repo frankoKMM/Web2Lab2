@@ -43,7 +43,8 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/users.html.twig', [
-            'user_name' => $name
+            'user_name' => $name,
+            'data' => $data
         ]);
     }
 }
