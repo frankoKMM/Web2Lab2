@@ -26,7 +26,7 @@ class HomeController extends AbstractController
     #[Route('/sql', name: 'sql')]
     public function sqlInjection(Request $request): Response
     {
-        $name = $request->query->get('name');
+        $name = $request->request->get('name');
 
 //        if ($request->request->get('sqlCheckbox')) {
 //            // this is the SQL injection vulnerable case
