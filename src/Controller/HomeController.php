@@ -31,7 +31,7 @@ class HomeController extends AbstractController
 
             // this is the SQL injection vulnerable case
             $data = $this->connection->fetchAllAssociative(
-                'SELECT * FROM app_user WHERE full_name=$name', $name
+                'SELECT * FROM app_user WHERE full_name=$name'
             );
         } else {
 //            $txt = "je null";
