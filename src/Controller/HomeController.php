@@ -31,13 +31,13 @@ class HomeController extends AbstractController
         if ($request->request->get('sqlCheckbox')) {
             // this is the SQL injection vulnerable case
             $data = $this->connection->fetchAllAssociative(
-                'SELECT * FROM user WHERE name=$name'
+                'SELECT * FROM user WHERE full_name=$name'
             );
         } else {
             // this is the SQL injection protected case
 //            $this->connection->prepare()
             $data = $this->connection->fetchAllAssociative(
-                'SELECT * FROM user WHERE name=:name', ['name' => $name]
+                'SELECT * FROM user WHERE full_name=:name', ['name' => $name]
             );
         }
 
