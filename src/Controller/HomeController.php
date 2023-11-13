@@ -28,22 +28,19 @@ class HomeController extends AbstractController
     {
         $name = $request->query->get('name');
 
-        if ($request->request->get('sqlCheckbox')) {
-            // this is the SQL injection vulnerable case
-            $data = $this->connection->fetchAllAssociative(
-                'SELECT * FROM user WHERE full_name=$name'
-            );
-        } else {
-            // this is the SQL injection protected case
-//            $this->connection->prepare()
-            $data = $this->connection->fetchAllAssociative(
-                'SELECT * FROM user WHERE full_name=:name', ['name' => $name]
-            );
-        }
+//        if ($request->request->get('sqlCheckbox')) {
+//            // this is the SQL injection vulnerable case
+//            $data = $this->connection->fetchAllAssociative(
+//                'SELECT * FROM user WHERE full_name=$name'
+//            );
+//        } else {
+//            // this is the SQL injection protected case
+//            $data = $this->connection->fetchAllAssociative(
+//                'SELECT * FROM user WHERE full_name=:name', ['name' => $name]
+//            );
+//        }
 
-        dump($data);
-
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/users.html.twig', [
             'user_name' => $name
         ]);
     }
